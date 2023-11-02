@@ -10,6 +10,7 @@ import CheckoutOrder from "~/Pages/Checkout/OrderComplete";
 import Product from "~/Pages/Product";
 import Post from "~/Pages/Post";
 import UpdateProduct from "~/Pages/UpdateProduct";
+import Order_History from "~/Pages/OrderHistory";
 
 const publicRoutes = [
   {
@@ -57,6 +58,10 @@ const publicRoutes = [
   {
     path: "/updateproduct/:id",
     component: UpdateProduct,
+  },
+  {
+    path: "/orderhistory/:id",
+    component: Order_History,
   },
 ];
 

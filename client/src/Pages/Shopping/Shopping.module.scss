@@ -32,6 +32,7 @@
   padding: 16px 14px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   .left {
     display: inline-flex;
@@ -54,8 +55,13 @@
     }
   }
 
+  .center {
+    display: inline-flex;
+    align-items: center;
+    gap: 32px;
+  }
+
   .right {
-    margin-left: auto;
     display: inline-flex;
     align-items: center;
     gap: 10px;

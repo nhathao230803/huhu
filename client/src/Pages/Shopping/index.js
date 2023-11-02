@@ -15,12 +15,32 @@ import axios from "axios";
 
 const cx = classNames.bind(styles);
 
+const FILTER = [
+  {
+    img: images.filterCat,
+    alt: "Cat",
+    value: "cat",
+  },
+  {
+    img: images.filterDog,
+    alt: "Dog",
+    value: "Dog",
+  },
+  {
+    img: images.filterProduct,
+    alt: "Product",
+    value: "product",
+  },
+];
+
 function Shopping() {
   const [pets, setPets] = useState([]);
 
+  const [filter, setFilter] = useState(FILTER[0].value);
+
   useEffect(() => {
     async function fetchData() {
-      let res = await axios.get("http://localhost:3000/products");
+      let res = await axios.get(`http://localhost:3000/products/`);
       setPets(res.data.data);
     }
     fetchData();
@@ -80,6 +100,13 @@ function Shopping() {
             <span className={cx("result-search")}>
               Showing 1 - 12 of 1000 results
             </span>
+          </div>
+          {/* Center */}
+          <div className={cx("center")}>
+            <span>Filter: </span>
+            {FILTER.map((item) => (
+              <img src={item.img} alt={item.alt} />
+            ))}
           </div>
           {/* Right */}
           <div className={cx("right")}>

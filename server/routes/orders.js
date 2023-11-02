@@ -18,6 +18,43 @@ import Product from "../models/Product.js";
 
 const router = express.Router();
 
+router.get("/list_order", requireRole("US"), async (Req, res) => {
+  const userId = res.locals.userData.id;
+
+  const order = await Order.findAll({
+    where: {
+      userId: userId,
+    },
+  });
+  const list = order.map((item) => item.dataValues.id);
+  console.log(list);
+
+  // const temp = list.map(async (item) => {
+  //   // console.log(item);
+  const temp = await ProductOrder.findAll({
+    where: {
+      orderId: list,
+    },
+    include: {
+      model: Product,
+      attributes: ["productName", "price"],
+    },
+  });
+
+  // const temp = await ProductOrder.findOne({
+  //   where: {
+  //     orderId: list[0],
+  //   },
+  //   include: {
+  //     model: Product,
+  //     attributes: ["productName", "price"],
+  //   },
+  // });
+
+  console.log(temp);
+  res.json(DataResponse(order, temp));
+});
+
 router.get("/:id", requireRole("US"), async (req, res) => {
   try {
     const id = parseInt(req.params.id);

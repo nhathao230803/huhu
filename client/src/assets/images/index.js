@@ -38,6 +38,10 @@ const images = {
   logout: require("~/assets/images/logout.png"),
   googleIcon: require("~/assets/images/GoogleIcon.svg").default,
   facebookIcon: require("~/assets/images/facebookIcon.svg").default,
+  viewIcon: require("~/assets/images/viewIcon.png"),
+  filterCat: require("~/assets/images/filterCat.png"),
+  filterDog: require("~/assets/images/filterDog.png"),
+  filterProduct: require("~/assets/images/filterProduct.png"),
 };
 
 export default images;
